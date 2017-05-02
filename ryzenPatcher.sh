@@ -1,5 +1,25 @@
 # chmod +x this file 
 # run it as sudo
+echo "Remember this does not configure/install the bootloader yet. Just the image."
+sleep 3
+
+rFiles=./ryzenFiles.zip
+
+# if extracted files are there remove em | we don't trust them
+if [ -d /tmp/rPatcher ]; then
+    echo "Removing Temp Files"
+    rm -r /tmp/rPatcher
+fi
+
+# if can't find the zip file exit
+if [ ! -f $rFiles ]; then
+    echo "Files not found, make sure you are in the same path as the source."
+    exit
+fi
+
+#unzip before 
+mkdir -p /tmp/rPatcher
+unzip ./rzyenFiles.zip -d /tmp/rPatcher 
 
 echo "Type your destination path.. ie /Volumes/RyzenSierra :"
 read pathToDisk
@@ -22,3 +42,5 @@ cp -rv /tmp/rPatcher/Extra/Extensions/* $pathToDisk/System/Library/Extensions/.
 rm -f $pathToDisk/System/Library/PrelinkedKernels/prelinkedkernel
 rm -r /tmp/rPatcher
 kextcache -u $pathToDisk
+
+echo "All done / Enjoy!"
