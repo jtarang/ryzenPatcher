@@ -1,3 +1,5 @@
+** This does not install the bootloader/ That is left for you to do **
+
 # Ryzen Hackintosh Patcher
 
 This script will patch your fresh 10.12 install to run on AMD systems.
