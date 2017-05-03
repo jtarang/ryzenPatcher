@@ -19,7 +19,8 @@ fi
 
 #unzip before 
 mkdir -p /tmp/rPatcher
-unzip ./rzyenFiles.zip -d /tmp/rPatcher 
+unzip ./ryzenFiles.zip -d /tmp/rPatcher 
+sleep 4
 
 echo "Type your destination path.. ie /Volumes/RyzenSierra :"
 read pathToDisk
