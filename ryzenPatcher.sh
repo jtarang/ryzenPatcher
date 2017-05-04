@@ -1,7 +1,13 @@
 # chmod +x this file 
 # run it as sudo
-echo "Remember this does not configure/install the bootloader yet. Just the image."
+printf "\n\nRemember this does not configure/install the bootloader yet. Just the image."
 sleep 3
+
+printf "\n\n"
+echo "Type your destination path.. ie /Volumes/RyzenSierra :"
+read pathToDisk
+printf "\nWriting files to " + $pathToDisk + "\n\n"
+sleep 4
 
 rFiles=./ryzenFiles.zip
 
@@ -22,9 +28,6 @@ mkdir -p /tmp/rPatcher
 unzip ./ryzenFiles.zip -d /tmp/rPatcher 
 sleep 4
 
-echo "Type your destination path.. ie /Volumes/RyzenSierra :"
-read pathToDisk
-
 # ditto merges
 ditto -V /tmp/rPatcher/Ryzen\ Essentials/kernel_rc2_ryzen/Extensions/System.kext $pathToDisk/System/Library/Extensions/.
 ditto /tmp/rPatcher/Ryzen\ Essentials/kernel_rc2_ryzen/Extensions/System.kext $pathToDisk/System/Library/Extensions/.
@@ -33,7 +36,7 @@ ditto -V /tmp/rPatcher/Ryzen\ Essentials/kernel_rc2_ryzen/Frameworks/Kernel.fram
 ditto -V /tmp/rPatcher/Ryzen\ Essentials/kernel_rc2_ryzen/Frameworks/System.framework/* $pathToDisk/System/Library/Frameworks/System.framework/*
 
 # cp bronya kernel over
-cp -rv /tmp/rPatcher/Ryzen\ Essentials/kernel_rc2_ryzen/Kernels/kernel $pathToDisk/System/Library/Kernels/.
+cp -rv /tmp/rPatcher/Ryzen\ Essentials/kernel_rc2_ryzen/Kernels $pathToDisk/System/Library/
 
 # these are the Spakk extensions
 cp -rv /tmp/rPatcher/Extra/Extensions/* $pathToDisk/System/Library/Extensions/.
