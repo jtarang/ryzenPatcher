@@ -8,8 +8,16 @@ This script will patch your fresh 10.12 install to run on AMD systems.
 
 ```sh
 $ git clone https://github.com/jaytarang92/ryzenPatcher.git
+$ cd ryzenPatcher/shell
 $ chmod +x ryzenPatcher.sh
 $ sudo ./ryzenPatcher.sh
+```
+
+or if you want to experiment and use the python
+```sh
+$ git clone https://github.com/jaytarang92/ryzenPatcher.git
+$ cd ryzenPatcher/py
+$ python ryzen.py --volume /Volume/NameOfYourDisk
 ```
 # Credits
 
@@ -17,6 +25,7 @@ $ sudo ./ryzenPatcher.sh
 These files are not mine and have been created and distributed on InsanelyMac
 Credits go to:
 - bronya <-- without him AMD systems would not be able to boot macOS
+- spakk <-- Provided the Extra/ Files
 - GigaMaxx <-- Provided clear instrucstions 
 
 Please let me know if anybody has contributed and is not listed here! Always give credit where due.
