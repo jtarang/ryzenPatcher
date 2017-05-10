@@ -44,7 +44,7 @@ ditto $patchPath/RyzenEssentials/kernel_rc2_ryzen/Extensions/System.kext $pathTo
 ditto -V $patchPath/RyzenEssentials/kernel_rc2_ryzen/Frameworks/IOKit.framework/* $pathToDisk/System/Library/Frameworks/IOKit.framework/*
 ditto -V $patchPath/RyzenEssentials/kernel_rc2_ryzen/Frameworks/Kernel.framework/* $pathToDisk/System/Library/Frameworks/Kernel.framework/*
 ditto -V $patchPath/RyzenEssentials/kernel_rc2_ryzen/Frameworks/System.framework/* $pathToDisk/System/Library/Frameworks/System.framework/*
-cp -rv $patchPath/RyzenEssentials/kernel_rc2_ryzen/Kernels $pathToDisk/System/Library/
+cp -rv $patchPath/RyzenEssentials/kernel_rc2_ryzen/Kernels $pathToDisk/System/Library/Kernels
 cp -rv $patchPath/Extra/Extensions/* $pathToDisk/System/Library/Extensions/.
 rm -f $pathToDisk/System/Library/PrelinkedKernels/prelinkedkernel
 kextcache -u $pathToDisk
@@ -63,7 +63,7 @@ ditto -V $patchPath/Extensions/System.kext $pathToDisk/System/Library/Extensions
 ditto -V $patchPath/Frameworks/IOKit.framework/* $pathToDisk/System/Library/Frameworks/IOKit.framework/*
 ditto -V $patchPath/Frameworks/Kernel.framework/* $pathToDisk/System/Library/Frameworks/Kernel.framework/*
 ditto -V $patchPath/Frameworks/System.framework/* $pathToDisk/System/Library/Frameworks/System.framework/*
-cp -r $patchPath/Kernels/ $pathToDisk/System/Library/
+cp -rv $patchPath/Kernels/ $pathToDisk/System/Library/Kernels
 kextcache -u $pathToDisk
 """
         if exists(pathToKernel):
@@ -96,5 +96,5 @@ if __name__ == "__main__":
         ryzen.check_for_files()
         ryzen.everything()
     print "\n\t\tPlease run kext wizard and rebuild caches!"
-    print "\n\t\tCopy the `kernel`file in `Extra/Kernels` and in Extra/."
+    print "\n\t\tPlease copy kernel file from {}/System/Library/Kernels/kernel to /Extra/Kernels/ and Extra/."
 
