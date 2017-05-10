@@ -9,7 +9,7 @@ read pathToDisk
 printf "\nWriting files to " + $pathToDisk + "\n\n"
 sleep 4
 
-rFiles=./ryzenFiles.zip
+rFiles=../ryzenFiles.zip
 
 # if extracted files are there remove em | we don't trust them
 if [ -d /tmp/rPatcher ]; then
@@ -25,7 +25,7 @@ fi
 
 #unzip before 
 mkdir -p /tmp/rPatcher
-unzip ./ryzenFiles.zip -d /tmp/rPatcher 
+unzip ../ryzenFiles.zip -d /tmp/rPatcher 
 sleep 4
 
 # ditto merges

@@ -1,4 +1,3 @@
-
 import argparse
 from os import makedirs as mkdirs
 from shutil import rmtree as rmfr
@@ -13,7 +12,7 @@ from sys import exit
 class RyzenPatcher():
 
     files = {
-        'patches' : 'ryzenFiles.zip',
+        'patches' : '../ryzenFiles.zip',
         'tempDir' : './tmp/patcheR'
         }
 
