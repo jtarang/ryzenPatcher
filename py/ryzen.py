@@ -47,6 +47,7 @@ ditto -V $patchPath/RyzenEssentials/kernel_"$rcv"_ryzen/Frameworks/Kernel.framew
 ditto -V $patchPath/RyzenEssentials/kernel_"$rcv"_ryzen/Frameworks/System.framework/* $pathToDisk/System/Library/Frameworks/System.framework/*
 cp -rv $patchPath/RyzenEssentials/kernel_"$rcv"_ryzen/Kernels $pathToDisk/System/Library/Kernels
 cp -rv $patchPath/Extra/Extensions/* $pathToDisk/System/Library/Extensions/.
+cp -rv $patchPath/RyzenEssentials/kernel_"$rcv"_ryzen/boot $pathToDisk/boot
 rm -f $pathToDisk/System/Library/PrelinkedKernels/prelinkedkernel
 kextcache -u $pathToDisk
 """
@@ -88,7 +89,7 @@ if __name__ == "__main__":
     parser.add_argument('--volume',
                         help='volume to patch to target| --volume /Volumes/RyzenSierra', required=True)
     parser.add_argument('--kernelVersion',
-                        help='version of kernel to use| --volume /Volumes/RyzenSierra --kernelVersion rc2', required=False)
+                        help='version of kernel to use| --volume /Volumes/RyzenSierra --kernelVersion rc2', const='rc4', type=string, required=False)
     parser.add_argument('--kernelSwitch',
                         help='change kernel files only| --volume /Volumes/RyzenSierra --kernelSwitch ~/Downloads/kernel_rc2_ryzen', required=False)
     args = parser.parse_args()
