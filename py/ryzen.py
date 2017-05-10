@@ -89,7 +89,7 @@ if __name__ == "__main__":
     parser.add_argument('--volume',
                         help='volume to patch to target| --volume /Volumes/RyzenSierra', required=True)
     parser.add_argument('--kernelVersion',
-                        help='version of kernel to use| --volume /Volumes/RyzenSierra --kernelVersion rc2', const='rc4', type=string, required=False)
+                        help='version of kernel to use| --volume /Volumes/RyzenSierra --kernelVersion rc2', nargs='?', const='rc4', required=False)
     parser.add_argument('--kernelSwitch',
                         help='change kernel files only| --volume /Volumes/RyzenSierra --kernelSwitch ~/Downloads/kernel_rc2_ryzen', required=False)
     args = parser.parse_args()
