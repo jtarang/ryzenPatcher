@@ -13,7 +13,7 @@ class RyzenPatcher():
 
     files = {
         'patches' : '../ryzenFiles.zip',
-        'tempDir' : './tmp/patcheR'
+        'tempDir' : './tmp/patcheR/ryzenFiles'
         }
 
     def check_for_files(self):
@@ -30,7 +30,7 @@ class RyzenPatcher():
             failure()
 
     def execute(self, pathToFiles, commands):
-        cmds = commands.format(pathToFiles, args.volume)
+        cmds = commands.format(pathToFiles, args.volume, args.kernelVersion)
         for c in cmds.split('\n'):
             system(c)
 
@@ -39,12 +39,13 @@ class RyzenPatcher():
 """
 export patchPath={}
 export pathToDisk={}
-ditto -V $patchPath/RyzenEssentials/kernel_rc2_ryzen/Extensions/System.kext $pathToDisk/System/Library/Extensions/.
-ditto $patchPath/RyzenEssentials/kernel_rc2_ryzen/Extensions/System.kext $pathToDisk/System/Library/Extensions/.
-ditto -V $patchPath/RyzenEssentials/kernel_rc2_ryzen/Frameworks/IOKit.framework/* $pathToDisk/System/Library/Frameworks/IOKit.framework/*
-ditto -V $patchPath/RyzenEssentials/kernel_rc2_ryzen/Frameworks/Kernel.framework/* $pathToDisk/System/Library/Frameworks/Kernel.framework/*
-ditto -V $patchPath/RyzenEssentials/kernel_rc2_ryzen/Frameworks/System.framework/* $pathToDisk/System/Library/Frameworks/System.framework/*
-cp -rv $patchPath/RyzenEssentials/kernel_rc2_ryzen/Kernels $pathToDisk/System/Library/Kernels
+export rcv={}
+ditto -V $patchPath/RyzenEssentials/kernel_"$rcv"_ryzen/Extensions/System.kext $pathToDisk/System/Library/Extensions/.
+ditto $patchPath/RyzenEssentials/kernel_"$rcv"_ryzen/Extensions/System.kext $pathToDisk/System/Library/Extensions/.
+ditto -V $patchPath/RyzenEssentials/kernel_"$rcv"_ryzen/Frameworks/IOKit.framework/* $pathToDisk/System/Library/Frameworks/IOKit.framework/*
+ditto -V $patchPath/RyzenEssentials/kernel_"$rcv"_ryzen/Frameworks/Kernel.framework/* $pathToDisk/System/Library/Frameworks/Kernel.framework/*
+ditto -V $patchPath/RyzenEssentials/kernel_"$rcv"_ryzen/Frameworks/System.framework/* $pathToDisk/System/Library/Frameworks/System.framework/*
+cp -rv $patchPath/RyzenEssentials/kernel_"$rcv"_ryzen/Kernels $pathToDisk/System/Library/Kernels
 cp -rv $patchPath/Extra/Extensions/* $pathToDisk/System/Library/Extensions/.
 rm -f $pathToDisk/System/Library/PrelinkedKernels/prelinkedkernel
 kextcache -u $pathToDisk
@@ -86,6 +87,8 @@ if __name__ == "__main__":
     ArgumentParser(description='Image patcher for ryzen CPU')
     parser.add_argument('--volume',
                         help='volume to patch to target| --volume /Volumes/RyzenSierra', required=True)
+    parser.add_argument('--kernelVersion',
+                        help='version of kernel to use| --volume /Volumes/RyzenSierra --kernelVersion rc2', required=False)
     parser.add_argument('--kernelSwitch',
                         help='change kernel files only| --volume /Volumes/RyzenSierra --kernelSwitch ~/Downloads/kernel_rc2_ryzen', required=False)
     args = parser.parse_args()
@@ -93,6 +96,11 @@ if __name__ == "__main__":
     if args.kernelSwitch and not '':
         ryzen.kernel(args.kernelSwitch)
     else:
+        if 'rc' in args.kernelVersion:
+            pass
+        else:
+            failure()
+
         ryzen.check_for_files()
         ryzen.everything()
     print "\n\t\tPlease run kext wizard and rebuild caches!"

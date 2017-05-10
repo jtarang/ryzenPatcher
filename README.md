@@ -6,14 +6,7 @@ This script will patch your fresh 10.12 install to run on AMD systems.
 
 ### Using the Patcher:
 
-```sh
-$ git clone https://github.com/jaytarang92/ryzenPatcher.git
-$ cd ryzenpatcher/shell
-$ chmod +x ryzenPatcher.sh
-$ sudo ./ryzenPatcher.sh
-```
 
-or if you want to experiment and use the python
 ```sh
 $ git clone https://github.com/jaytarang92/ryzenPatcher.git
 $ cd ryzenpatcher/py
