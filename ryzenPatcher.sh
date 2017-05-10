@@ -29,14 +29,14 @@ unzip ./ryzenFiles.zip -d /tmp/rPatcher
 sleep 4
 
 # ditto merges
-ditto -V /tmp/rPatcher/Ryzen\ Essentials/kernel_rc2_ryzen/Extensions/System.kext $pathToDisk/System/Library/Extensions/.
-ditto /tmp/rPatcher/Ryzen\ Essentials/kernel_rc2_ryzen/Extensions/System.kext $pathToDisk/System/Library/Extensions/.
-ditto -V /tmp/rPatcher/Ryzen\ Essentials/kernel_rc2_ryzen/Frameworks/IOKit.framework/* $pathToDisk/System/Library/Frameworks/IOKit.framework/*
-ditto -V /tmp/rPatcher/Ryzen\ Essentials/kernel_rc2_ryzen/Frameworks/Kernel.framework/* $pathToDisk/System/Library/Frameworks/Kernel.framework/*
-ditto -V /tmp/rPatcher/Ryzen\ Essentials/kernel_rc2_ryzen/Frameworks/System.framework/* $pathToDisk/System/Library/Frameworks/System.framework/*
+ditto -V /tmp/rPatcher/RyzenEssentials/kernel_rc2_ryzen/Extensions/System.kext $pathToDisk/System/Library/Extensions/.
+ditto /tmp/rPatcher/RyzenEssentials/kernel_rc2_ryzen/Extensions/System.kext $pathToDisk/System/Library/Extensions/.
+ditto -V /tmp/rPatcher/RyzenEssentials/kernel_rc2_ryzen/Frameworks/IOKit.framework/* $pathToDisk/System/Library/Frameworks/IOKit.framework/*
+ditto -V /tmp/rPatcher/RyzenEssentials/kernel_rc2_ryzen/Frameworks/Kernel.framework/* $pathToDisk/System/Library/Frameworks/Kernel.framework/*
+ditto -V /tmp/rPatcher/RyzenEssentials/kernel_rc2_ryzen/Frameworks/System.framework/* $pathToDisk/System/Library/Frameworks/System.framework/*
 
 # cp bronya kernel over
-cp -rv /tmp/rPatcher/Ryzen\ Essentials/kernel_rc2_ryzen/Kernels $pathToDisk/System/Library/
+cp -rv /tmp/rPatcher/RyzenEssentials/kernel_rc2_ryzen/Kernels $pathToDisk/System/Library/
 
 # these are the Spakk extensions
 cp -rv /tmp/rPatcher/Extra/Extensions/* $pathToDisk/System/Library/Extensions/.
