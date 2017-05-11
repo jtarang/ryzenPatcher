@@ -95,11 +95,6 @@ if __name__ == "__main__":
     ryzen = RyzenPatcher()
     if args.kernelSwitch and not '':
         ryzen.kernel(args.kernelSwitch)
-    else:
-        if 'rc' in args.kernelVersion:
-            pass
-        else:
-            failure()
 
         ryzen.check_for_files()
         ryzen.everything()
