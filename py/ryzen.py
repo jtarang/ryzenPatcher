@@ -96,11 +96,6 @@ if __name__ == "__main__":
     if args.kernelSwitch and not '':
         ryzen.kernel(args.kernelSwitch)
     else:
-        if 'rc' in args.kernelVersion:
-            pass
-        else:
-            failure()
-
         ryzen.check_for_files()
         ryzen.everything()
     print "\n\t\tPlease run kext wizard and rebuild caches!"
