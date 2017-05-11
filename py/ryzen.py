@@ -95,7 +95,7 @@ if __name__ == "__main__":
     ryzen = RyzenPatcher()
     if args.kernelSwitch and not '':
         ryzen.kernel(args.kernelSwitch)
-
+    else:
         ryzen.check_for_files()
         ryzen.everything()
     print "\n\t\tPlease run kext wizard and rebuild caches!"
