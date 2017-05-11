@@ -13,7 +13,7 @@ class RyzenPatcher():
 
     files = {
         'patches' : '../ryzenFiles.zip',
-        'tempDir' : './tmp/patcheR/ryzenFiles'
+        'tempDir' : './tmp/patcheR/'
         }
 
     def check_for_files(self):
@@ -30,9 +30,8 @@ class RyzenPatcher():
             failure()
 
     def execute(self, pathToFiles, commands):
-        cmds = commands.format(pathToFiles, args.volume, args.kernelVersion)
-        for c in cmds.split('\n'):
-            system(c)
+        cmds = commands.format(pathToFiles+'/ryzenFiles', args.volume, 'kernel_{}_ryzen'.format(args.kernelVersion))
+        system(cmds)
 
     def everything(self):
         ditto_cmds = \
@@ -40,14 +39,14 @@ class RyzenPatcher():
 export patchPath={}
 export pathToDisk={}
 export rcv={}
-ditto -V $patchPath/RyzenEssentials/kernel_"$rcv"_ryzen/Extensions/System.kext $pathToDisk/System/Library/Extensions/.
-ditto $patchPath/RyzenEssentials/kernel_"$rcv"_ryzen/Extensions/System.kext $pathToDisk/System/Library/Extensions/.
-ditto -V $patchPath/RyzenEssentials/kernel_"$rcv"_ryzen/Frameworks/IOKit.framework/* $pathToDisk/System/Library/Frameworks/IOKit.framework/*
-ditto -V $patchPath/RyzenEssentials/kernel_"$rcv"_ryzen/Frameworks/Kernel.framework/* $pathToDisk/System/Library/Frameworks/Kernel.framework/*
-ditto -V $patchPath/RyzenEssentials/kernel_"$rcv"_ryzen/Frameworks/System.framework/* $pathToDisk/System/Library/Frameworks/System.framework/*
-cp -rv $patchPath/RyzenEssentials/kernel_"$rcv"_ryzen/Kernels $pathToDisk/System/Library/Kernels
+ditto -V $patchPath/RyzenEssentials/$rcv/Extensions/System.kext $pathToDisk/System/Library/Extensions/.
+ditto $patchPath/RyzenEssentials/$rcv/Extensions/System.kext $pathToDisk/System/Library/Extensions/.
+ditto -V $patchPath/RyzenEssentials/$rcv/Frameworks/IOKit.framework/* $pathToDisk/System/Library/Frameworks/IOKit.framework/*
+ditto -V $patchPath/RyzenEssentials/$rcv/Frameworks/Kernel.framework/* $pathToDisk/System/Library/Frameworks/Kernel.framework/*
+ditto -V $patchPath/RyzenEssentials/$rcv/Frameworks/System.framework/* $pathToDisk/System/Library/Frameworks/System.framework/*
+cp -rv $patchPath/RyzenEssentials/$rcv/Kernels $pathToDisk/System/Library/Kernels
 cp -rv $patchPath/Extra/Extensions/* $pathToDisk/System/Library/Extensions/.
-cp -rv $patchPath/RyzenEssentials/kernel_"$rcv"_ryzen/boot $pathToDisk/boot
+cp -rv $patchPath/RyzenEssentials/$rcv/boot $pathToDisk/boot
 rm -f $pathToDisk/System/Library/PrelinkedKernels/prelinkedkernel
 kextcache -u $pathToDisk
 """
@@ -105,5 +104,5 @@ if __name__ == "__main__":
         ryzen.check_for_files()
         ryzen.everything()
     print "\n\t\tPlease run kext wizard and rebuild caches!"
-    print "\n\t\tPlease copy kernel file from {}/System/Library/Kernels/kernel to /Extra/Kernels/ and Extra/."
+    print "\n\t\tPlease copy kernel file from {}System/Library/Kernels/kernel to /Extra/Kernels/ and Extra/.".format(args.volume)
 
