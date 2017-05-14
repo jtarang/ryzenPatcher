@@ -19,6 +19,6 @@ These files are not mine and have been created and distributed on InsanelyMac
 Credits go to:
 - bronya <-- without him AMD systems would not be able to boot macOS
 - spakk <-- Provided the Extra/ Files
-- GigaMaxx <-- Provided clear instrucstions 
+- GigaMaxx <-- Provided clear instructions 
 
 Please let me know if anybody has contributed and is not listed here! Always give credit where due.
