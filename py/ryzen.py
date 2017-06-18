@@ -30,7 +30,9 @@ class RyzenPatcher():
             failure()
 
     def execute(self, pathToFiles, commands):
-        cmds = commands.format(pathToFiles+'/ryzenFiles', args.volume, 'kernel_{}_ryzen'.format(args.kernelVersion))
+        if not args.kernelVersion:
+            args.kernelVersion = 'kernel16'
+        cmds = commands.format(pathToFiles+'/ryzenFiles', args.volume, '{}'.format(args.kernelVersion))
         system(cmds)
 
     def everything(self):
@@ -99,5 +101,4 @@ if __name__ == "__main__":
         ryzen.check_for_files()
         ryzen.everything()
     print "\n\t\tPlease run kext wizard and rebuild caches!"
-    print "\n\t\tPlease copy kernel file from {}System/Library/Kernels/kernel to /Extra/Kernels/ and Extra/.".format(args.volume)
 
