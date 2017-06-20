@@ -46,10 +46,11 @@ ditto $patchPath/RyzenEssentials/$rcv/Extensions/System.kext $pathToDisk/System/
 ditto -V $patchPath/RyzenEssentials/$rcv/Frameworks/IOKit.framework/* $pathToDisk/System/Library/Frameworks/IOKit.framework/*
 ditto -V $patchPath/RyzenEssentials/$rcv/Frameworks/Kernel.framework/* $pathToDisk/System/Library/Frameworks/Kernel.framework/*
 ditto -V $patchPath/RyzenEssentials/$rcv/Frameworks/System.framework/* $pathToDisk/System/Library/Frameworks/System.framework/*
-cp -rv $patchPath/RyzenEssentials/$rcv/Kernels $pathToDisk/System/Library/Kernels
+rm -f $pathToDisk/System/Library/Kernels/*
+cp -rv $patchPath/RyzenEssentials/$rcv/Kernels/kernel $pathToDisk/System/Library/Kernels/kernel
 cp -rv $patchPath/Extra/Extensions/* $pathToDisk/System/Library/Extensions/.
 cp -rv $patchPath/RyzenEssentials/$rcv/boot $pathToDisk/boot
-rm -f $pathToDisk/System/Library/PrelinkedKernels/prelinkedkernel
+cp -rv $patchPath/RyzenEssentials/$rcv/Kernels/prelinkedkernel $pathToDisk/System/Library/PrelinkedKernel/*
 kextcache -u $pathToDisk
 """
 
@@ -66,7 +67,9 @@ ditto -V $patchPath/Extensions/System.kext $pathToDisk/System/Library/Extensions
 ditto -V $patchPath/Frameworks/IOKit.framework/* $pathToDisk/System/Library/Frameworks/IOKit.framework/*
 ditto -V $patchPath/Frameworks/Kernel.framework/* $pathToDisk/System/Library/Frameworks/Kernel.framework/*
 ditto -V $patchPath/Frameworks/System.framework/* $pathToDisk/System/Library/Frameworks/System.framework/*
+rm -f $pathToDisk/System/Library/Kernels/*
 cp -rv $patchPath/Kernels/ $pathToDisk/System/Library/Kernels
+cp -rv $patchPath/RyzenEssentials/$rcv/Kernels/prelinkedkernel $pathToDisk/System/Library/PrelinkedKernel/*
 kextcache -u $pathToDisk
 """
         if exists(pathToKernel):
