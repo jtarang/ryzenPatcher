@@ -1,3 +1,5 @@
+# I am no longer maintaing this, as I had to sell my parts. If you need help please send a messge on insanelymac.com or jaytarang92@gmail.com
+
 ** This does not install the bootloader/ That is left for you to do **
 
 # Ryzen Hackintosh Patcher
