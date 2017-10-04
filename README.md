@@ -12,7 +12,7 @@ This script will patch your fresh 10.12 install to run on AMD systems.
 ```sh
 $ git clone https://github.com/jaytarang92/ryzenPatcher.git
 $ cd ryzenpatcher/py
-$ python ryzen.py --volume /Volume/NameOfYourDisk
+$ sudo python ryzen.py --volume /Volume/NameOfYourDisk
 ```
 # Credits
 
